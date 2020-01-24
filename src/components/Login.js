@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -40,16 +40,15 @@ const useStyles = makeStyles(theme => ({
   submit: {
       margin: theme.spacing(3, 0, 2),
   },
-}));
+}));    
 
+function Login(){
 
-function SignIn(){
     const classes = useStyles();
-    const [values, setValues] = React.useState({
-        amount: '',
+
+    const [values, setValues] = useState({
+        email:'',
         password: '',
-        weight: '',
-        weightRange: '',
         showPassword: false,
     });
 
@@ -64,6 +63,12 @@ function SignIn(){
     const handleMouseDownPassword = event => {
         event.preventDefault();
     };
+
+    const submitEvent = event => {
+        event.preventDefault();
+        console.log("Logget på med  " + values.email);
+    }
+
     return (
 
 <Container component="main" maxWidth="xs">
@@ -75,7 +80,7 @@ function SignIn(){
                 <Typography component="h1" variant="h5">
                     Logg inn
                 </Typography>
-                <form className={classes.form} noValidate>
+                <form onSubmit={submitEvent} className={classes.form} noValidate>
                     <TextField
                         variant="outlined"
                         margin="normal"
@@ -84,8 +89,9 @@ function SignIn(){
                         id="email"
                         label="Epost"
                         name="email"
-                        autoComplete="email"
-                        autoFocus
+                        type="text"
+                        onChange={handleChange('email')}
+                       
                     />
                     <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined" fullWidth>
                         <InputLabel htmlFor="outlined-adornment-password" required>Passord</InputLabel>
@@ -162,6 +168,6 @@ function Copyright() {
     );
 }
 
-export default SignIn;
+export default Login;
 
 

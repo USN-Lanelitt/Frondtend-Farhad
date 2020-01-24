@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -42,13 +42,14 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function SignUp() {
+export default function Registrer() {
     const classes = useStyles();
-    const [values, setValues] = React.useState({
-        amount: '',
-        password: '',
-        weight: '',
-        weightRange: '',
+    const [values, setValues] = useState({
+        fornavn: '',
+        etternavn:'',
+        telefon:'',
+        epost:'',
+        passord: '',
         showPassword: false,
     });
 
@@ -63,6 +64,23 @@ export default function SignUp() {
     const handleMouseDownPassword = event => {
         event.preventDefault();
     };
+
+    const submitEvent = event => {
+        event.preventDefault();
+        
+        console.log(
+            "Konto info " + 
+            values.fornavn + 
+            " " + 
+            values.etternavn + 
+            " " + 
+            values.telefon + 
+            " " + 
+            values.epost + 
+            " " +
+            values.passord);
+    }
+
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -73,18 +91,18 @@ export default function SignUp() {
                 <Typography component="h1" variant="h5">
                     Opprett konto
                 </Typography>
-                <form className={classes.form} noValidate>
+                <form onSubmit={submitEvent} className={classes.form} noValidate>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 autoComplete="fname"
-                                name="firstName"
                                 variant="outlined"
                                 required
                                 fullWidth
-                                id="firstName"
+                                id="fname"
                                 label="Fornavn"
                                 autoFocus
+                                onChange={handleChange('fornavn')}
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -92,10 +110,9 @@ export default function SignUp() {
                                 variant="outlined"
                                 required
                                 fullWidth
-                                id="lastName"
+                                id="enavn"
                                 label="Etternavn"
-                                name="lastName"
-                                autoComplete="lname"
+                                onChange={handleChange('etternavn')}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -105,8 +122,7 @@ export default function SignUp() {
                                 fullWidth
                                 id="telefon"
                                 label="Telefon"
-                                name="telefon"
-                                autoComplete="telefon"
+                                onChange={handleChange('telefon')}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -114,10 +130,9 @@ export default function SignUp() {
                                 variant="outlined"
                                 required
                                 fullWidth
-                                id="email"
+                                id="epost"
                                 label="Epost"
-                                name="email"
-                                autoComplete="email"
+                                onChange={handleChange('epost')}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -127,7 +142,7 @@ export default function SignUp() {
                                     id="outlined-adornment-password"
                                     type={values.showPassword ? 'text' : 'password'}
                                     value={values.password}
-                                    onChange={handleChange('password')}
+                                    onChange={handleChange('passord')}
                                     endAdornment={
                                         <InputAdornment position="end">
                                             <IconButton
