@@ -69,7 +69,7 @@ export default function Registrer() {
         event.preventDefault();
         alert("Bruker opprettet!");
         
-        /*console.log(
+        console.log(
             "Konto info " + 
             values.fornavn + 
             " " + 
@@ -79,8 +79,8 @@ export default function Registrer() {
             " " + 
             values.epost + 
             " " +
-            values.passord);*/
-    }
+            values.passord);
+    };
 
     return (
         <Container component="main" maxWidth="xs">
