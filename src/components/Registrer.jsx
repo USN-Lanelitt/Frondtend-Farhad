@@ -43,15 +43,80 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Registrer() {
+
+    let [firstname_reg, setFirstnameRegVar] = useState('');
+    let [lastname_reg, setLastnameRegVar] = useState('');
+    let [birthday_reg, setBirthdayRegVar] = useState('');
+    let [phone_reg, setPhoneRegVar] = useState('');
+    let [email_reg, setEmailRegVar] = useState('');
+    let [password_reg, setPasswordRegVar] = useState('');
+
+
+    function Register() {
+        if (setFirstnameRegVar.length > 1 && setLastnameRegVar.length > 1 && setBirthdayRegVar.length > 1
+            && setPhoneRegVar.length >= 0 && setEmailRegVar.length > 1 && setPasswordRegVar.length > 1) {
+            fetch('http://127.0.0.1:8000/api/register', {
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json',
+                    //'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    firstname: setFirstnameRegVar,
+                    lastname: setLastnameRegVar,
+                    birthday: setBirthdayRegVar,
+                    phone: setPhoneRegVar,
+                    email: setEmailRegVar,
+                    password: setPasswordRegVar
+                })
+            })
+                .then((Response) => Response.json())
+                .then((Result) => {
+                    alert(Result);
+                })
+        }
+        else {
+            alert("Alle feltene må fylles ut");
+        }
+    }
+
+    function setFirstnameReg(e) {
+        setFirstnameRegVar = e.target.value;
+    }
+
+    function setLastnameReg(e) {
+        setLastnameRegVar = e.target.value;
+    }
+
+    function setBirthdayReg(e) {
+        setBirthdayRegVar = e.target.value;
+    }
+
+    function setPhoneReg(e) {
+        setPhoneRegVar = e.target.value;
+    }
+
+    function setEmailReg(e) {
+        setEmailRegVar = e.target.value;
+    }
+
+    function setPasswordReg(e) {
+        setPasswordRegVar = e.target.value;
+    }
+
+
     const classes = useStyles();
     const [values, setValues] = useState({
         fornavn: '',
         etternavn:'',
+        fdato: '',
         telefon:'',
         epost:'',
         passord: '',
         showPassword: false,
     });
+
+
 
     const handleChange = prop => event => {
         setValues({ ...values, [prop]: event.target.value });
@@ -65,23 +130,6 @@ export default function Registrer() {
         event.preventDefault();
     };
 
-    const submitEvent = event => {
-        event.preventDefault();
-        alert("Bruker opprettet!");
-        
-        console.log(
-            "Konto info " + 
-            values.fornavn + 
-            " " + 
-            values.etternavn + 
-            " " + 
-            values.telefon + 
-            " " + 
-            values.epost + 
-            " " +
-            values.passord);
-    };
-
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -92,58 +140,74 @@ export default function Registrer() {
                 <Typography component="h1" variant="h5">
                     Opprett konto
                 </Typography>
-                <form onSubmit={submitEvent} className={classes.form} noValidate>
+
+                <form className={classes.form} noValidate>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
                             <TextField
-                                autoComplete="fname"
+                                name="firstname"
+                                autoComplete="firstname"
                                 variant="outlined"
                                 required
                                 fullWidth
-                                id="fname"
+                                id="firstname"
                                 label="Fornavn"
                                 autoFocus
-                                onChange={handleChange('fornavn')}
+                                onChange={setFirstnameReg}
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <TextField
+                                name="lastname"
                                 variant="outlined"
                                 required
                                 fullWidth
-                                id="enavn"
+                                id="lastname"
                                 label="Etternavn"
-                                onChange={handleChange('etternavn')}
+                                onChange={setLastnameReg}
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                name="birthday"
+                                variant="outlined"
+                                required
+                                fullWidth
+                                id="birthday"
+                                type="date"
+                                onChange={setBirthdayReg}
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                name="phone"
+                                variant="outlined"
+                                fullWidth
+                                id="phone"
+                                label="Telefon (valgfri)"
+                                onChange={setPhoneReg}
                             />
                         </Grid>
                         <Grid item xs={12}>
                             <TextField
+                                name="email"
                                 variant="outlined"
                                 required
                                 fullWidth
-                                id="telefon"
-                                label="Telefon"
-                                onChange={handleChange('telefon')}
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="epost"
+                                id="email"
                                 label="Epost"
-                                onChange={handleChange('epost')}
+                                onChange={setEmailReg}
                             />
                         </Grid>
                         <Grid item xs={12}>
                             <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined" fullWidth>
                                 <InputLabel htmlFor="outlined-adornment-password" required>Passord</InputLabel>
                                 <OutlinedInput
+                                    name="confirmPassword"
                                     id="outlined-adornment-password"
                                     type={values.showPassword ? 'text' : 'password'}
                                     value={values.password}
-                                    onChange={handleChange('passord')}
+                                    onChange={setPasswordReg}
                                     endAdornment={
                                         <InputAdornment position="end">
                                             <IconButton
@@ -174,8 +238,8 @@ export default function Registrer() {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
-                    >
-                        Opprett konto
+                        onClick={() => Register()}
+                    >Opprett konto
                     </Button>
                     <Grid container justify="flex-end">
                         <Grid item>

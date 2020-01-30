@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PostData from '../services/PostData';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -52,6 +53,29 @@ function Login(){
         showPassword: false,
     });
 
+    /*if (values.email.length === 0 || values.password.length === 0) {
+        alert("Alle feltene må fylles ut");
+    }
+    else {
+        fetch('http://127.0.0.1:8000/api/log', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify({
+                username: values.email,
+                password: values.password
+            })
+        })
+            .then((Response) => Response.json())
+            .then((Result) => {
+                alert(Result);
+            })
+    }*/
+
+
+
+
     const handleChange = prop => event => {
         setValues({ ...values, [prop]: event.target.value });
     };
@@ -67,7 +91,7 @@ function Login(){
     const submitEvent = event => {
         event.preventDefault();
         console.log("Logget på med  " + values.email);
-    }
+    };
 
     return (
 
