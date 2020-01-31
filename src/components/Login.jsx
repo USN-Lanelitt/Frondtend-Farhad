@@ -52,26 +52,29 @@ function Login(){
         password: '',
         showPassword: false,
     });
+    function UserLogin() {
 
-    if (values.email.length === 0 || values.password.length === 0) {
-        alert("Alle feltene må fylles ut");
-    }
-    else {
-        fetch('http://127.0.0.1:8000/api/login', {
-            method: 'post',
-            headers: {
-                'Accept': 'application/json',
-            },
-            body: JSON.stringify({
-                username: values.email,
-                password: values.password
+        if (values.email.length === 0 || values.password.length === 0) {
+            console.log("Alle feltene må fylles ut");
+        }
+        else {
+            fetch('http://127.0.0.1:8000/api/login', {
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: values.email,
+                    password: values.password
+                })
             })
-        })
-            .then((Response) => Response.json())
-            .then((Result) => {
-                alert(Result);
-            })
+                .then((Response) => Response.json())
+                .then((Result) => {
+                    alert(Result);
+                })
+        }
     }
+
 
 
 
@@ -151,7 +154,7 @@ function Login(){
                         variant="contained"
                         color="primary"
                         className={classes.submit}
-                        //onClick={() => Login()}
+                        onClick={() => UserLogin()}
 
                     >
                         Logg inn

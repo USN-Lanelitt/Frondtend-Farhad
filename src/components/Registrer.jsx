@@ -47,15 +47,17 @@ export default function Registrer() {
 
     let [setFirstnameRegVar] = useState('');
     let [setLastnameRegVar] = useState('');
-    //let [setBirthdayRegVar] = useState('');
+    let [setBirthdayRegVar] = useState('');
     let [setPhoneRegVar] = useState('');
     let [setEmailRegVar] = useState('');
     let [setPasswordRegVar] = useState('');
 
 
     function Register() {
-        if (setFirstnameRegVar.length > 1 && setLastnameRegVar.length > 1 /*&& setBirthdayRegVar.length >= 0*/
+        if (setFirstnameRegVar.length > 1 && setLastnameRegVar.length > 1 && setBirthdayRegVar.length >= 0
             && setPhoneRegVar.length >= 0 && setEmailRegVar.length > 1 && setPasswordRegVar.length > 1) {
+            console.log("Her kommer meldinger!");
+            alert(setBirthdayRegVar);
             fetch('http://127.0.0.1:8000/api/register', {
                 method: 'post',
                 headers: {
@@ -65,7 +67,7 @@ export default function Registrer() {
                 body: JSON.stringify({
                     firstname: setFirstnameRegVar,
                     lastname: setLastnameRegVar,
-                    //birthday: setBirthdayRegVar,
+                    birthday: setBirthdayRegVar,
                     phone: setPhoneRegVar,
                     email: setEmailRegVar,
                     password: setPasswordRegVar
@@ -90,9 +92,9 @@ export default function Registrer() {
         setLastnameRegVar = e.target.value;
     }
 
-    /*function setBirthdayReg(e) {
+    function setBirthdayReg(e) {
         setBirthdayRegVar = e.target.value;
-    }*/
+    }
 
     function setPhoneReg(e) {
         setPhoneRegVar = e.target.value;
@@ -178,7 +180,7 @@ export default function Registrer() {
                                 fullWidth
                                 id="birthday"
                                 type="date"
-                                //onChange={setBirthdayReg}
+                                onChange={setBirthdayReg}
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>

@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c433183c-4df8-4699-855d-f5b173234ce0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Registrer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Registrer.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,6 +89,8 @@
       <workItem from="1580340230130" duration="10561000" />
       <workItem from="1580452467866" duration="1340000" />
       <workItem from="1580456377921" duration="5786000" />
+      <workItem from="1580467671519" duration="127000" />
+      <workItem from="1580488824913" duration="3721000" />
     </task>
     <task id="LOCAL−00001" summary="Added alert pop-up">
       <created>1579876984003</created>
@@ -110,7 +110,13 @@
       <option name="presentableId" value="LOCAL−00003" />
       <updated>1580351397678</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL−00004" summary="init commit">
+      <created>1580467743527</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1580467743527</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,11 +138,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-660.-1440.3440.1400@0.0.1920.1040" timestamp="1579877132243" />
-    <state x="309" y="-1401" key="CommitChangelistDialog2" timestamp="1580351517194">
+    <state x="309" y="-1401" key="CommitChangelistDialog2" timestamp="1580467742634">
       <screen x="-736" y="-1440" width="3440" height="1400" />
     </state>
     <state x="583" y="29" key="CommitChangelistDialog2/0.0.1920.1040/-660.-1440.3440.1400@0.0.1920.1040" timestamp="1579877047058" />
-    <state x="309" y="-1401" key="CommitChangelistDialog2/0.0.1920.1040/-736.-1440.3440.1400@-736.-1440.3440.1400" timestamp="1580351517194" />
+    <state x="309" y="-1401" key="CommitChangelistDialog2/0.0.1920.1040/-736.-1440.3440.1400@-736.-1440.3440.1400" timestamp="1580467742634" />
     <state x="1624" y="-994" key="FileChooserDialogImpl" timestamp="1580351321399">
       <screen x="-736" y="-1440" width="3440" height="1400" />
     </state>
@@ -145,10 +151,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="361" y="347" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1579918786425" />
-    <state x="1601" y="-1070" width="816" height="547" key="Vcs.Push.Dialog.v2" timestamp="1580351552605">
+    <state x="1601" y="-1070" width="816" height="547" key="Vcs.Push.Dialog.v2" timestamp="1580467753984">
       <screen x="-736" y="-1440" width="3440" height="1400" />
     </state>
-    <state x="1601" y="-1070" width="816" height="547" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-736.-1440.3440.1400@-736.-1440.3440.1400" timestamp="1580351552605" />
+    <state x="1601" y="-1070" width="816" height="547" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-736.-1440.3440.1400@-736.-1440.3440.1400" timestamp="1580467753984" />
     <state x="2256" y="525" key="com.intellij.ide.util.TipDialog" timestamp="1579734404468">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -157,10 +163,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="767" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-660.-1440.3440.1400@0.0.1920.1040" timestamp="1579877029658" />
-    <state x="1691" y="-1021" width="672" height="678" key="search.everywhere.popup" timestamp="1580467726753">
-      <screen x="-736" y="-1440" width="3440" height="1400" />
+    <state x="1355" y="311" width="672" height="504" key="search.everywhere.popup" timestamp="1580494083402">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1691" y="-1021" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-736.-1440.3440.1400@-736.-1440.3440.1400" timestamp="1580467726753" />
+    <state x="1691" y="-1021" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-736.-1440.3440.1400@-736.-1440.3440.1400" timestamp="1580467748277" />
+    <state x="1355" y="311" width="672" height="504" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1580494083402" />
     <state x="523" y="320" width="672" height="678" key="search.everywhere.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1579918803303" />
   </component>
 </project>
