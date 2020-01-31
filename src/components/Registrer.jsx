@@ -21,6 +21,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import {register} from "../serviceWorker";
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -44,16 +45,16 @@ const useStyles = makeStyles(theme => ({
 
 export default function Registrer() {
 
-    let [firstname_reg, setFirstnameRegVar] = useState('');
-    let [lastname_reg, setLastnameRegVar] = useState('');
-    let [birthday_reg, setBirthdayRegVar] = useState('');
-    let [phone_reg, setPhoneRegVar] = useState('');
-    let [email_reg, setEmailRegVar] = useState('');
-    let [password_reg, setPasswordRegVar] = useState('');
+    let [setFirstnameRegVar] = useState('');
+    let [setLastnameRegVar] = useState('');
+    //let [setBirthdayRegVar] = useState('');
+    let [setPhoneRegVar] = useState('');
+    let [setEmailRegVar] = useState('');
+    let [setPasswordRegVar] = useState('');
 
 
     function Register() {
-        if (setFirstnameRegVar.length > 1 && setLastnameRegVar.length > 1 && setBirthdayRegVar.length > 1
+        if (setFirstnameRegVar.length > 1 && setLastnameRegVar.length > 1 /*&& setBirthdayRegVar.length >= 0*/
             && setPhoneRegVar.length >= 0 && setEmailRegVar.length > 1 && setPasswordRegVar.length > 1) {
             fetch('http://127.0.0.1:8000/api/register', {
                 method: 'post',
@@ -64,7 +65,7 @@ export default function Registrer() {
                 body: JSON.stringify({
                     firstname: setFirstnameRegVar,
                     lastname: setLastnameRegVar,
-                    birthday: setBirthdayRegVar,
+                    //birthday: setBirthdayRegVar,
                     phone: setPhoneRegVar,
                     email: setEmailRegVar,
                     password: setPasswordRegVar
@@ -80,6 +81,7 @@ export default function Registrer() {
         }
     }
 
+
     function setFirstnameReg(e) {
         setFirstnameRegVar = e.target.value;
     }
@@ -88,9 +90,9 @@ export default function Registrer() {
         setLastnameRegVar = e.target.value;
     }
 
-    function setBirthdayReg(e) {
+    /*function setBirthdayReg(e) {
         setBirthdayRegVar = e.target.value;
-    }
+    }*/
 
     function setPhoneReg(e) {
         setPhoneRegVar = e.target.value;
@@ -106,6 +108,7 @@ export default function Registrer() {
 
 
     const classes = useStyles();
+
     const [values, setValues] = useState({
         fornavn: '',
         etternavn:'',
@@ -118,9 +121,9 @@ export default function Registrer() {
 
 
 
-    const handleChange = prop => event => {
+    /*const handleChange = prop => event => {
         setValues({ ...values, [prop]: event.target.value });
-    };
+    };*/
 
     const handleClickShowPassword = () => {
         setValues({ ...values, showPassword: !values.showPassword });
@@ -175,7 +178,7 @@ export default function Registrer() {
                                 fullWidth
                                 id="birthday"
                                 type="date"
-                                onChange={setBirthdayReg}
+                                //onChange={setBirthdayReg}
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
