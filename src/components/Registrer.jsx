@@ -54,10 +54,10 @@ export default function Registrer() {
 
 
     function Register() {
-        if (setFirstnameRegVar.length > 1 && setLastnameRegVar.length > 1 && setBirthdayRegVar.length >= 0
-            && setPhoneRegVar.length >= 0 && setEmailRegVar.length > 1 && setPasswordRegVar.length > 1) {
+        /*if (setFirstnameRegVar.length > 1 && setLastnameRegVar.length > 1 && setBirthdayRegVar.length >= 0
+            && setPhoneRegVar.length >= 0 && setEmailRegVar.length > 1 && setPasswordRegVar.length > 1)*/
             console.log("Her kommer meldinger!");
-            alert(setBirthdayRegVar);
+            //alert(setBirthdayRegVar);
             fetch('http://127.0.0.1:8000/api/register', {
                 method: 'post',
                 headers: {
@@ -67,7 +67,7 @@ export default function Registrer() {
                 body: JSON.stringify({
                     firstname: setFirstnameRegVar,
                     lastname: setLastnameRegVar,
-                    birthday: setBirthdayRegVar,
+                    birthday: '28.02.2020',
                     phone: setPhoneRegVar,
                     email: setEmailRegVar,
                     password: setPasswordRegVar
@@ -77,10 +77,6 @@ export default function Registrer() {
                 .then((Result) => {
                     alert(Result);
                 })
-        }
-        else {
-            alert("Alle feltene må fylles ut");
-        }
     }
 
 
@@ -159,6 +155,7 @@ export default function Registrer() {
                                 label="Fornavn"
                                 autoFocus
                                 onChange={setFirstnameReg}
+                                value="Farhad"
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -170,6 +167,7 @@ export default function Registrer() {
                                 id="lastname"
                                 label="Etternavn"
                                 onChange={setLastnameReg}
+                                value="Ahmadhadi"
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -191,6 +189,7 @@ export default function Registrer() {
                                 id="phone"
                                 label="Telefon (valgfri)"
                                 onChange={setPhoneReg}
+                                value="94139451"
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -202,6 +201,7 @@ export default function Registrer() {
                                 id="email"
                                 label="Epost"
                                 onChange={setEmailReg}
+
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -211,7 +211,6 @@ export default function Registrer() {
                                     name="confirmPassword"
                                     id="outlined-adornment-password"
                                     type={values.showPassword ? 'text' : 'password'}
-                                    value={values.password}
                                     onChange={setPasswordReg}
                                     endAdornment={
                                         <InputAdornment position="end">

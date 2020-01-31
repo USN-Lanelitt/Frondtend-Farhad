@@ -83,6 +83,7 @@ export default function Home() {
                 variant="outlined"
             />
           </div>
+          <h3>Verktøy</h3>
           <hr/>
           <Grid container spacing={4}>
             {cards.map(card => (

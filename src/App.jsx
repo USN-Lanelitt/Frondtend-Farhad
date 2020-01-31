@@ -12,11 +12,6 @@ function App(){
       <Router>
         <div className="App">
         <Nav />
-        <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/log" component={Login} />
-        <Route path="/lag" component={Registrer} />
-        </Switch>
         </div>
       </Router>
     );

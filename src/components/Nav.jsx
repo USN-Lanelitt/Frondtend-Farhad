@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link, Route, Switch} from 'react-router-dom';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -16,6 +16,9 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
+import Home from "./Home";
+import Login from "./Login";
+import Registrer from "./Registrer";
 
 
 const useStyles = makeStyles(theme => ({
@@ -232,6 +235,13 @@ export default function PrimarySearchAppBar() {
             </AppBar>
             {renderMobileMenu}
             {renderMenu}
+
+            <main>
+                <Route path="/" exact component={Home} />
+                <Route path="/log" component={Login} />
+                <Route path="/lag" component={Registrer} />
+            </main>
+
         </div>
     );
 }
