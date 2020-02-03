@@ -21,7 +21,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import {register} from "../serviceWorker";
+
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -119,10 +119,6 @@ export default function Registrer() {
 
 
 
-    /*const handleChange = prop => event => {
-        setValues({ ...values, [prop]: event.target.value });
-    };*/
-
     const handleClickShowPassword = () => {
         setValues({ ...values, showPassword: !values.showPassword });
     };
@@ -155,7 +151,19 @@ export default function Registrer() {
                                 label="Fornavn"
                                 autoFocus
                                 onChange={setFirstnameReg}
-                                value="Farhad"
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                name="middlename"
+                                autoComplete="middlename"
+                                variant="outlined"
+                                required
+                                fullWidth
+                                id="middlename"
+                                label="Mellomnavn"
+                                autoFocus
+                                //onChange={setMiddlenameReg}
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -167,7 +175,6 @@ export default function Registrer() {
                                 id="lastname"
                                 label="Etternavn"
                                 onChange={setLastnameReg}
-                                value="Ahmadhadi"
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -189,7 +196,67 @@ export default function Registrer() {
                                 id="phone"
                                 label="Telefon (valgfri)"
                                 onChange={setPhoneReg}
-                                value="94139451"
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                name="nickname"
+                                variant="outlined"
+                                fullWidth
+                                id="nickname"
+                                label="Kallenavn (valgfri)"
+                                //onChange={setPhoneReg}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                name="address1"
+                                autoComplete="address1"
+                                variant="outlined"
+                                required
+                                fullWidth
+                                id="address1"
+                                label="Adresse"
+                                autoFocus
+                                //onChange={setFirstnameReg}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                name="address2"
+                                autoComplete="address2"
+                                variant="outlined"
+                                fullWidth
+                                id="address2"
+                                label="Adresse 2"
+                                autoFocus
+                                //onChange={setFirstnameReg}
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                name="zipcode"
+                                autoComplete="zipcode"
+                                variant="outlined"
+                                required
+                                fullWidth
+                                id="zipcode"
+                                label="Post nummer"
+                                autoFocus
+                                //onChange={setFirstnameReg}
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                name="city"
+                                autoComplete="city"
+                                variant="outlined"
+                                required
+                                fullWidth
+                                id="city"
+                                label="by"
+                                autoFocus
+                                //onChange={setFirstnameReg}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -233,6 +300,12 @@ export default function Registrer() {
                             <FormControlLabel
                                 control={<Checkbox value="allowExtraEmails" color="primary" />}
                                 label="Jeg ønsker å motta nyheter på mail"
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <FormControlLabel
+                                control={<Checkbox value="termsAndConditions" color="primary" />}
+                                label="Jeg godtar brukervilkårene (not really! Muwahahaha!)"
                             />
                         </Grid>
                     </Grid>

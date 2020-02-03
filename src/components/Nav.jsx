@@ -1,6 +1,14 @@
 import React from 'react';
+import clsx from 'clsx';
 import {Link, Route, Switch} from 'react-router-dom';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { fade, makeStyles, useTheme} from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -14,14 +22,23 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import Button from '@material-ui/core/Button';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import IconButton from '@material-ui/core/IconButton';
 import Home from "./Home";
 import Login from "./Login";
 import Registrer from "./Registrer";
+import Profile from "./Profile";
 
 
 const useStyles = makeStyles(theme => ({
+    list: {
+        width: 250,
+    },
+    fullList: {
+        width: 'auto',
+    },
+
     grow: {
         flexGrow: 1,
     },
@@ -81,10 +98,74 @@ const useStyles = makeStyles(theme => ({
             display: 'none',
         },
     },
+    contentShift: {
+        transition: theme.transitions.create('margin', {
+            easing: theme.transitions.easing.easeOut,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+        marginLeft: 0,
+    },
+    drawerHeader: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: theme.spacing(0, 1),
+        ...theme.mixins.toolbar,
+        justifyContent: 'flex-end',
+    },
 }));
 
 export default function PrimarySearchAppBar() {
     const classes = useStyles();
+    const theme = useTheme();
+    const [state, setState] = React.useState({
+        left: false
+    });
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleDrawerOpen = () => {
+        setOpen(true);
+    };
+
+    const handleDrawerClose = () => {
+        setOpen(false);
+    };
+
+    const toggleDrawer = (side, open) => event => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            return;
+        }
+
+        setState({ ...state, [side]: open });
+    };
+
+    const sideList = side => (
+        <div
+            className={classes.list}
+            role="presentation"
+            onClick={toggleDrawer(side, false)}
+            onKeyDown={toggleDrawer(side, false)}
+        >
+            <List>
+                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                    <ListItem button key={text}>
+                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+            <Divider />
+            <List>
+                {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                    <ListItem button key={text}>
+                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+        </div>
+    );
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -119,8 +200,11 @@ export default function PrimarySearchAppBar() {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
+            <Link to="/prof" style={{ textDecoration: 'none', color: 'black' }}>
             <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <Link to="/log" style={{ textDecoration: 'none' }}>
+            </Link>
+
+            <Link to="/log" style={{ textDecoration: 'none', color: 'black' }}>
             <MenuItem onClick={handleMenuClose}>My account</MenuItem>
             </Link>
         </Menu>
@@ -172,10 +256,11 @@ export default function PrimarySearchAppBar() {
             <AppBar position="static">
                 <Toolbar>
                     <IconButton
-                        edge="start"
-                        className={classes.menuButton}
                         color="inherit"
                         aria-label="open drawer"
+                        onClick={handleDrawerOpen}
+                        edge="start"
+                        className={clsx(classes.menuButton, open && classes.hide)}
                     >
                         <MenuIcon />
                     </IconButton>
@@ -183,6 +268,8 @@ export default function PrimarySearchAppBar() {
                     <Typography className={classes.title} variant="h6" noWrap>
                         Lånelitt
                     </Typography>
+
+
                     </Link>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
@@ -235,11 +322,50 @@ export default function PrimarySearchAppBar() {
             </AppBar>
             {renderMobileMenu}
             {renderMenu}
+            <Drawer
+                className={classes.drawer}
+                variant="persistent"
+                anchor="left"
+                open={open}
+                classes={{
+                    paper: classes.drawerPaper,
+                }}
+            >
+                <div className={classes.drawerHeader}>
+                    <IconButton onClick={handleDrawerClose}>
+                        {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                    </IconButton>
+                </div>
+                <Divider />
+                <List>
+                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                        <ListItem button key={text}>
+                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItem>
+                    ))}
+                </List>
+                <Divider />
+                <List>
+                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                        <ListItem button key={text}>
+                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItem>
+                    ))}
+                </List>
+            </Drawer>
+            <main
+                className={clsx(classes.content, {
+                    [classes.contentShift]: open,
+                })}
+            />
 
             <main>
                 <Route path="/" exact component={Home} />
                 <Route path="/log" component={Login} />
                 <Route path="/lag" component={Registrer} />
+                <Route path="/prof" component={Profile}/>
             </main>
 
         </div>
