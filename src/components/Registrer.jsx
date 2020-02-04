@@ -48,14 +48,14 @@ export default function Registrer() {
     let [setFirstnameRegVar] = useState('');
     let [setLastnameRegVar] = useState('');
     let [setBirthdayRegVar] = useState('');
-    let [setPhoneRegVar] = useState('');
+    let [setMobileRegVar] = useState('');
     let [setEmailRegVar] = useState('');
     let [setPasswordRegVar] = useState('');
 
 
     function Register() {
         /*if (setFirstnameRegVar.length > 1 && setLastnameRegVar.length > 1 && setBirthdayRegVar.length >= 0
-            && setPhoneRegVar.length >= 0 && setEmailRegVar.length > 1 && setPasswordRegVar.length > 1)*/
+            && setMobileRegVar.length >= 0 && setEmailRegVar.length > 1 && setPasswordRegVar.length > 1)*/
             console.log("Her kommer meldinger!");
             //alert(setBirthdayRegVar);
             fetch('http://127.0.0.1:8000/api/register', {
@@ -68,7 +68,7 @@ export default function Registrer() {
                     firstname: setFirstnameRegVar,
                     lastname: setLastnameRegVar,
                     birthday: '28.02.2020',
-                    phone: setPhoneRegVar,
+                    mobile: setMobileRegVar,
                     email: setEmailRegVar,
                     password: setPasswordRegVar
                 })
@@ -92,8 +92,8 @@ export default function Registrer() {
         setBirthdayRegVar = e.target.value;
     }
 
-    function setPhoneReg(e) {
-        setPhoneRegVar = e.target.value;
+    function setMobileReg(e) {
+        setMobileRegVar = e.target.value;
     }
 
     function setEmailReg(e) {
@@ -108,11 +108,6 @@ export default function Registrer() {
     const classes = useStyles();
 
     const [values, setValues] = useState({
-        fornavn: '',
-        etternavn:'',
-        fdato: '',
-        telefon:'',
-        epost:'',
         passord: '',
         showPassword: false,
     });
@@ -179,6 +174,16 @@ export default function Registrer() {
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <TextField
+                                name="mobile"
+                                variant="outlined"
+                                fullWidth
+                                id="mobile"
+                                label="Telefon (valgfri)"
+                                onChange={setMobileReg}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
                                 name="birthday"
                                 variant="outlined"
                                 required
@@ -186,77 +191,6 @@ export default function Registrer() {
                                 id="birthday"
                                 type="date"
                                 onChange={setBirthdayReg}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                name="phone"
-                                variant="outlined"
-                                fullWidth
-                                id="phone"
-                                label="Telefon (valgfri)"
-                                onChange={setPhoneReg}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                name="nickname"
-                                variant="outlined"
-                                fullWidth
-                                id="nickname"
-                                label="Kallenavn (valgfri)"
-                                //onChange={setPhoneReg}
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                name="address1"
-                                autoComplete="address1"
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="address1"
-                                label="Adresse"
-                                autoFocus
-                                //onChange={setFirstnameReg}
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                name="address2"
-                                autoComplete="address2"
-                                variant="outlined"
-                                fullWidth
-                                id="address2"
-                                label="Adresse 2"
-                                autoFocus
-                                //onChange={setFirstnameReg}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                name="zipcode"
-                                autoComplete="zipcode"
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="zipcode"
-                                label="Post nummer"
-                                autoFocus
-                                //onChange={setFirstnameReg}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                name="city"
-                                autoComplete="city"
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="city"
-                                label="by"
-                                autoFocus
-                                //onChange={setFirstnameReg}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -305,7 +239,7 @@ export default function Registrer() {
                         <Grid item xs={12}>
                             <FormControlLabel
                                 control={<Checkbox value="termsAndConditions" color="primary" />}
-                                label="Jeg godtar brukervilkårene (not really! Muwahahaha!)"
+                                label="Jeg godtar brukervilkår"
                             />
                         </Grid>
                     </Grid>
