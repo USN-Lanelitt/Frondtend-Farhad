@@ -21,6 +21,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import BrukerVilkar from './termsandconditions';
 
 
 const useStyles = makeStyles(theme => ({
@@ -239,8 +240,10 @@ export default function Registrer() {
                         <Grid item xs={12}>
                             <FormControlLabel
                                 control={<Checkbox value="termsAndConditions" color="primary" />}
-                                label="Jeg godtar brukervilkår"
-                            />
+                                label="Jeg godtar brukervilkårene" 
+                            /> 
+                            <BrukerVilkar/>
+                            
                         </Grid>
                     </Grid>
                     <Button

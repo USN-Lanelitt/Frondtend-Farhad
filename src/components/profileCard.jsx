@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'clsx';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -9,14 +9,26 @@ import Divider from '@material-ui/core/Divider';
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
 import { useGutterBorderedGridStyles } from '@mui-treasury/styles/grid/gutterBordered';
 import {grey} from "@material-ui/core/colors";
+import Badge from '@material-ui/core/Badge';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import CustomizedDialogs from './editProfile';
 
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(theme => ({
     card: {
         borderRadius: 12,
         minWidth: 256,
         textAlign: 'center',
     },
+    margin: {
+        margin: theme.spacing(1),
+      },
+      extendedIcon: {
+        marginRight: theme.spacing(1),
+      },
     avatar: {
         width: 60,
         height: 60,
@@ -50,20 +62,63 @@ const useStyles = makeStyles(({ palette }) => ({
     },
 }));
 
+const StyledBadge = withStyles(theme => ({
+    badge: {
+      backgroundColor: '#44b700',
+      color: '#44b700',
+      boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+      '&::after': {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        borderRadius: '50%',
+        animation: '$ripple 1.2s infinite ease-in-out',
+        border: '1px solid currentColor',
+        content: '""',
+      },
+    },
+    '@keyframes ripple': {
+      '0%': {
+        transform: 'scale(.8)',
+        opacity: 1,
+      },
+      '100%': {
+        transform: 'scale(2.4)',
+        opacity: 0,
+      },
+    },
+  }))(Badge);
+
+  
+
 export default function ProfileCard(){
     const styles = useStyles();
+    const classes = useStyles();
     const shadowStyles = useFadedShadowStyles();
     const borderedGridStyles = useGutterBorderedGridStyles({
         borderColor: 'rgba(0, 0, 0, 0.08)',
         height: '50%',
     });
+
+    
+    
     return (
         <Card className={cx(styles.card, shadowStyles.root)}>
             <CardContent>
+            <IconButton>
+            <StyledBadge overlap="circle" anchorOrigin={{vertical: 'bottom', horizontal: 'right',}} variant="dot">
                 <Avatar className={styles.avatar} src={'https://i.pravatar.cc/150?img=68'} />
+            </StyledBadge>
+            <CustomizedDialogs/>
+            </IconButton>
                 <h3 className={styles.heading}>Farhad Ahmadhadi</h3>
-                <span className={styles.subheader}>Norge</span>
+                <span className={styles.subheader}>Admin</span>
             </CardContent>
+            <Button variant="outlined" size="small" color="primary" className={classes.margin}>
+                Legg til som venn
+            </Button>
             <Divider light />
             <Box display={'flex'}>
                 <Box p={2} flex={'auto'} className={borderedGridStyles.item}>

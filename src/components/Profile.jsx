@@ -24,6 +24,9 @@ import Link from "@material-ui/core/Link";
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
+    icon: {
+        marginRight: theme.spacing(2),
+      },
     root: {
         display: 'flex',
     },
@@ -89,7 +92,7 @@ export default function Profile() {
                 <div className={classes.toolbar} />
                 <ProfileCard/>
                 <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                    {['Venner', 'Mine Eiendeler', 'Utlånt Eiendeler', 'Lånt Eiendeler'].map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                             <ListItemText primary={text} />
@@ -98,7 +101,7 @@ export default function Profile() {
                 </List>
                 <Divider />
                 <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                    {['Innstillinger', 'Rapporter', 'Hjelp'].map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                             <ListItemText primary={text} />
@@ -116,7 +119,6 @@ export default function Profile() {
                     </Typography>
                     <Copyright />
                 </footer>
-
             </Drawer>
 
             <main>
@@ -129,7 +131,7 @@ export default function Profile() {
                     </Container>
                 </div>
 
-                <Container className={classes.cardGrid} maxWidth="md">
+                <Container className={classes.cardGrid} maxWidth="l">
                     <h3>Eiendeler / Kategorier</h3>
                     <hr/>
                     <Grid container spacing={4}>

@@ -32,6 +32,11 @@ import Profile from "./Profile";
 
 
 const useStyles = makeStyles(theme => ({
+    root: {
+        '& > * + *': {
+          marginLeft: theme.spacing(2),
+        },
+    },
     list: {
         width: 250,
     },
@@ -117,9 +122,10 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function NavBar() {
     const classes = useStyles();
     const theme = useTheme();
+    const preventDefault = event => event.preventDefault();
 
     const [open, setOpen] = React.useState(false);
 
@@ -167,11 +173,11 @@ export default function PrimarySearchAppBar() {
             onClose={handleMenuClose}
         >
             <Link to="/prof" style={{ textDecoration: 'none', color: 'black' }}>
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+            <MenuItem onClick={handleMenuClose}>Min Profil</MenuItem>
             </Link>
 
             <Link to="/log" style={{ textDecoration: 'none', color: 'black' }}>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            <MenuItem onClick={handleMenuClose}>Logg på / Registrer</MenuItem>
             </Link>
         </Menu>
     );
@@ -222,7 +228,7 @@ export default function PrimarySearchAppBar() {
             <AppBar position="sticky" className={classes.appBar}>
                 <Toolbar>
                     <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
-                    <Typography className={classes.title} variant="h6" noWrap>
+                    <Typography className={classes.title} variant="h5" noWrap>
                         Lånelitt
                     </Typography>
                     </Link>
@@ -239,6 +245,19 @@ export default function PrimarySearchAppBar() {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </div>
+                    <Typography variant="h6" className={classes.root}>
+                    <Link to="/"  style={{ textDecoration: 'none', color: 'white' }}>
+                    Hjem
+                    </Link>
+                    
+                    <Link to="/prof" style={{ textDecoration: 'none', color: 'white' }}>
+                    Min side
+                    </Link>
+
+                    <Link to="#" onClick={preventDefault} style={{ textDecoration: 'none', color: 'white' }}>
+                    Hjelp
+                    </Link>
+                    </Typography>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
                         <IconButton aria-label="show 1 new mails" color="inherit">
