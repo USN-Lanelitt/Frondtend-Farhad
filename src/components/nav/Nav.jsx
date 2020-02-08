@@ -226,6 +226,7 @@ export default function NavBar(props) {
     );
 
     const menuId = 'primary-search-account-menu';
+
     const renderMenu = (
         <Menu
             anchorEl={anchorEl}
@@ -291,7 +292,7 @@ export default function NavBar(props) {
 
     return (
         <div className={classes.grow}>
-            <AppBar position="sticky" className={classes.appBar}>
+            <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
                     <IconButton
                         color="inherit"
