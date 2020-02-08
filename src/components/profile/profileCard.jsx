@@ -116,18 +116,11 @@ export default function ProfileCard(){
                 <h3 className={styles.heading}>Farhad Ahmadhadi</h3>
                 <span className={styles.subheader}>Admin</span>
             </CardContent>
-            <Button variant="outlined" size="small" color="primary" className={classes.margin}>
-                Legg til som venn
-            </Button>
             <Divider light />
             <Box display={'flex'}>
                 <Box p={2} flex={'auto'} className={borderedGridStyles.item}>
-                    <p className={styles.statLabel}>Followers</p>
-                    <p className={styles.statValue}>6941</p>
-                </Box>
-                <Box p={2} flex={'auto'} className={borderedGridStyles.item}>
-                    <p className={styles.statLabel}>Following</p>
-                    <p className={styles.statValue}>12</p>
+                    <p className={styles.statLabel}>Mine Venner</p>
+                    <p className={styles.statValue}>240</p>
                 </Box>
             </Box>
         </Card>

@@ -239,10 +239,11 @@ export default function Registrer() {
                         </Grid>
                         <Grid item xs={12}>
                             <FormControlLabel
-                                control={<Checkbox value="termsAndConditions" color="primary" />}
-                                label="Jeg godtar brukervilkårene" 
+                                control={<Checkbox value="termsAndConditions" color="primary"/>}
+                                label={<BrukerVilkar/>}
                             /> 
-                            <BrukerVilkar/>
+                            
+                            
                             
                         </Grid>
                     </Grid>

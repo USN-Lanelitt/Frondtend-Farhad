@@ -7,6 +7,8 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+
 
 export default function BrukerVilkar() {
   const [open, setOpen] = React.useState(false);
@@ -24,7 +26,7 @@ export default function BrukerVilkar() {
   return (
     <div>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Klikk her for brukervilkår
+        Jeg godtar brukervilkårene
       </Button>
       <Dialog
         fullScreen={fullScreen}
@@ -35,10 +37,9 @@ export default function BrukerVilkar() {
         <DialogTitle id="responsive-dialog-title">{"Lånelitt Brukervilkår"}</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            1.Ved å bruke....
-            2.Brukeren må....
-            3.Ansvar....
-            4.Osv.....
+          <Typography>
+            <h1></h1>
+          </Typography>
           </DialogContentText>
         </DialogContent>
         <DialogActions>

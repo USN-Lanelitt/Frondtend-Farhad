@@ -24,7 +24,7 @@ import Link from "@material-ui/core/Link";
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
-    icon: {
+    icons: {
         marginRight: theme.spacing(2),
       },
     root: {
@@ -126,7 +126,7 @@ export default function Profile() {
                 <div className={classes.heroContent}>
                     <Container maxWidth="sm">
                         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-                            Profil side
+                            Min Profil
                         </Typography>
                     </Container>
                 </div>
