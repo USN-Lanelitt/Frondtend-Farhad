@@ -1,14 +1,14 @@
 import React from 'react';
-import clsx from 'clsx';
 import {Link, Route} from 'react-router-dom';
-import { fade, makeStyles, useTheme} from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
+import Divider from '@material-ui/core/Divider';
+import Drawer from '@material-ui/core/Drawer';
+import Hidden from '@material-ui/core/Hidden';
+import { fade, makeStyles, useTheme} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -22,15 +22,14 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import IconButton from '@material-ui/core/IconButton';
-import Home from "./Home";
-import Login from "./Login";
-import Registrer from "./Registrer";
-import Profile from "./Profile";
+import Home from "../home/Home";
+import Login from "../login/Login";
+import Registrer from "../register/Registrer";
+import Profile from "../profile/Profile";
+import ProfileCard from "../profile/profileCard";
 
-
+const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -38,21 +37,40 @@ const useStyles = makeStyles(theme => ({
           marginLeft: theme.spacing(2),
         },
     },
+    drawer: {
+        [theme.breakpoints.up('sm')]: {
+            width: drawerWidth,
+            flexShrink: 0,
+        },
+    },
+    appBar: {
+        [theme.breakpoints.up('sm')]: {
+            width: `calc(100% - ${drawerWidth}px)`,
+            marginLeft: drawerWidth,
+        },
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+        [theme.breakpoints.up('sm')]: {
+            display: 'none',
+        },
+    },
+    toolbar: theme.mixins.toolbar,
+    drawerPaper: {
+        width: drawerWidth,
+    },
+    content: {
+        flexGrow: 1,
+        padding: theme.spacing(3),
+    },
     list: {
         width: 250,
     },
     fullList: {
         width: 'auto',
     },
-    appBar: {
-        zIndex: theme.zIndex.drawer + 1,
-    },
-
     grow: {
         flexGrow: 1,
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
     },
     title: {
         display: 'none',
@@ -123,20 +141,17 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function NavBar() {
+export default function NavBar(props) {
+    const { container } = props;
     const classes = useStyles();
     const theme = useTheme();
     const preventDefault = event => event.preventDefault();
 
-    const [open, setOpen] = React.useState(false);
-
-    const handleDrawerOpen = () => {
-        setOpen(true);
+    const [mobileOpen, setMobileOpen] = React.useState(false);
+    const handleDrawerToggle = () => {
+        setMobileOpen(!mobileOpen);
     };
 
-    const handleDrawerClose = () => {
-        setOpen(false);
-    };
 
 
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -161,6 +176,54 @@ export default function NavBar() {
     const handleMobileMenuOpen = event => {
         setMobileMoreAnchorEl(event.currentTarget);
     };
+
+    function Copyright() {
+        return (
+            <Typography variant="body2" color="textSecondary" align="center">
+                {'Copyright © '}
+                <Link color="inherit" href="https://material-ui.com/">
+                    Lånelitt AS
+                </Link>{' '}
+                {new Date().getFullYear()}
+                {'.'}
+            </Typography>
+        );
+    }
+
+    const drawer = (
+        <div>
+            <div className={classes.toolbar} />
+            <ProfileCard/>
+            <List>
+                {['Venner', 'Mine Eiendeler', 'Utlånt Eiendeler', 'Lånt Eiendeler'].map((text, index) => (
+                    <ListItem button key={text}>
+                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+            <Divider />
+            <List>
+                {['Innstillinger', 'Rapporter', 'Hjelp'].map((text, index) => (
+                    <ListItem button key={text}>
+                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+
+            {/* Footer */}
+            <footer className={classes.footer}>
+                <Typography variant="h6" align="center" gutterBottom>
+                    Lånelitt
+                </Typography>
+                <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+                    ProgTeam Lånelitt
+                </Typography>
+                <Copyright />
+            </footer>
+        </div>
+    );
 
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
@@ -224,10 +287,21 @@ export default function NavBar() {
         </Menu>
     );
 
+
+
     return (
         <div className={classes.grow}>
             <AppBar position="sticky" className={classes.appBar}>
                 <Toolbar>
+                    <IconButton
+                        color="inherit"
+                        aria-label="open drawer"
+                        edge="start"
+                        onClick={handleDrawerToggle}
+                        className={classes.menuButton}
+                    >
+                        <MenuIcon />
+                    </IconButton>
                     <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
                     <Typography className={classes.title} variant="h5" noWrap>
                         Lånelitt
@@ -295,6 +369,37 @@ export default function NavBar() {
                     </div>
                 </Toolbar>
             </AppBar>
+            <nav className={classes.drawer} aria-label="mailbox folders">
+                {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+                <Hidden smUp implementation="css">
+                    <Drawer
+                        container={container}
+                        variant="temporary"
+                        anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+                        open={mobileOpen}
+                        onClose={handleDrawerToggle}
+                        classes={{
+                            paper: classes.drawerPaper,
+                        }}
+                        ModalProps={{
+                            keepMounted: true, // Better open performance on mobile.
+                        }}
+                    >
+                        {drawer}
+                    </Drawer>
+                </Hidden>
+                <Hidden xsDown implementation="css">
+                    <Drawer
+                        classes={{
+                            paper: classes.drawerPaper,
+                        }}
+                        variant="permanent"
+                        open
+                    >
+                        {drawer}
+                    </Drawer>
+                </Hidden>
+            </nav>
             {renderMobileMenu}
             {renderMenu}
 
