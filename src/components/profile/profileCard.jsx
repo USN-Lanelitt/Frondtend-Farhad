@@ -10,11 +10,8 @@ import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
 import { useGutterBorderedGridStyles } from '@mui-treasury/styles/grid/gutterBordered';
 import {grey} from "@material-ui/core/colors";
 import Badge from '@material-ui/core/Badge';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import CustomizedDialogs from './editProfile';
+import EditProfileSettings from "./editProfile";
 
 
 const useStyles = makeStyles(theme => ({
@@ -105,25 +102,31 @@ export default function ProfileCard(){
     
     
     return (
-        <Card className={cx(styles.card, shadowStyles.root)}>
-            <CardContent>
-            <IconButton>
-            <StyledBadge overlap="circle" anchorOrigin={{vertical: 'bottom', horizontal: 'right',}} variant="dot">
-                <Avatar className={styles.avatar} src={'https://i.pravatar.cc/150?img=68'} />
+      <Card className={cx(styles.card, shadowStyles.root)}>
+        <CardContent>
+          <IconButton>
+            <StyledBadge
+              overlap="circle"
+              anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+              variant="dot"
+            >
+              <Avatar
+                className={styles.avatar}
+                src={"https://i.pravatar.cc/150?img=68"}
+              />
             </StyledBadge>
-            <CustomizedDialogs/>
-            </IconButton>
-                <h3 className={styles.heading}>Farhad Ahmadhadi</h3>
-                <span className={styles.subheader}>Admin</span>
-            </CardContent>
-            <Divider light />
-            <Box display={'flex'}>
-                <Box p={2} flex={'auto'} className={borderedGridStyles.item}>
-                    <p className={styles.statLabel}>Mine Venner</p>
-                    <p className={styles.statValue}>240</p>
-                </Box>
-            </Box>
-        </Card>
+          </IconButton>
+          <h3 className={styles.heading}>Farhad Ahmadhadi</h3>
+          <span className={styles.subheader}>Admin</span>
+        </CardContent>
+        <Divider light />
+        <Box display={"flex"}>
+          <Box p={2} flex={"auto"} className={borderedGridStyles.item}>
+            <p className={styles.statLabel}>Venner</p>
+            <p className={styles.statValue}>240</p>
+          </Box>
+        </Box>
+      </Card>
     );
 };
 

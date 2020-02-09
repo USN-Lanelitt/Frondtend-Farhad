@@ -9,8 +9,9 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import EditIcon from '@material-ui/icons/Edit';
-import Fab from '@material-ui/core/Fab';
+import SettingsIcon from "@material-ui/icons/Settings";
 import Avatar from '@material-ui/core/Avatar';
+import ListItemText from "@material-ui/core/ListItemText";
 
 const styles = theme => ({
   root: {
@@ -52,7 +53,7 @@ const DialogActions = withStyles(theme => ({
   },
 }))(MuiDialogActions);
 
-export default function CustomizedDialogs() {
+export default function EditProfileSettings() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -65,17 +66,24 @@ export default function CustomizedDialogs() {
   return (
     <div>
       <IconButton onClick={handleClickOpen}>
-      <EditIcon/> 
+        <EditIcon />
+        <ListItemText primary="Endre Profilbilde" />
       </IconButton>
-      <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+      <Dialog
+        onClose={handleClose}
+        aria-labelledby="customized-dialog-title"
+        open={open}
+      >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
           Endre Profil Bilde
         </DialogTitle>
         <DialogContent dividers>
-        <Avatar className={styles.avatar} src={'https://i.pravatar.cc/150?img=68'} />
-        
-        <input type="file"></input>
+          <Avatar
+            className={styles.avatar}
+            src={"https://i.pravatar.cc/150?img=68"}
+          />
 
+          <input type="file"></input>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose} color="primary">

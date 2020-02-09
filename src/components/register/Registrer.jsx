@@ -47,6 +47,7 @@ const useStyles = makeStyles(theme => ({
 export default function Registrer() {
 
     let [setFirstnameRegVar] = useState('');
+    let [setMiddlenameRegVar] = useState('');
     let [setLastnameRegVar] = useState('');
     let [setBirthdayRegVar] = useState('');
     let [setMobileRegVar] = useState('');
@@ -67,8 +68,9 @@ export default function Registrer() {
                 },
                 body: JSON.stringify({
                     firstname: setFirstnameRegVar,
+                    middlename: setMiddlenameRegVar,
                     lastname: setLastnameRegVar,
-                    birthday: '28.02.2020',
+                    birthday: setBirthdayRegVar,
                     mobile: setMobileRegVar,
                     email: setEmailRegVar,
                     password: setPasswordRegVar
@@ -83,6 +85,10 @@ export default function Registrer() {
 
     function setFirstnameReg(e) {
         setFirstnameRegVar = e.target.value;
+    }
+
+    function setMiddlenameReg(e) {
+        setMiddlenameRegVar = e.target.value;
     }
 
     function setLastnameReg(e) {
@@ -159,7 +165,7 @@ export default function Registrer() {
                                 id="middlename"
                                 label="Mellomnavn"
                                 autoFocus
-                                //onChange={setMiddlenameReg}
+                                onChange={setMiddlenameReg}
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
