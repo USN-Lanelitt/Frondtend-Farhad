@@ -11,7 +11,6 @@ import { useGutterBorderedGridStyles } from '@mui-treasury/styles/grid/gutterBor
 import {grey} from "@material-ui/core/colors";
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
-import EditProfileSettings from "./editProfile";
 
 
 const useStyles = makeStyles(theme => ({
@@ -92,7 +91,6 @@ const StyledBadge = withStyles(theme => ({
 
 export default function ProfileCard(){
     const styles = useStyles();
-    const classes = useStyles();
     const shadowStyles = useFadedShadowStyles();
     const borderedGridStyles = useGutterBorderedGridStyles({
         borderColor: 'rgba(0, 0, 0, 0.08)',

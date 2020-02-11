@@ -38,7 +38,7 @@ export default function BrukerVilkar() {
         <DialogContent>
           <DialogContentText>
           <Typography>
-            <h1></h1>
+            <h1>Vilkår</h1>
           </Typography>
           </DialogContentText>
         </DialogContent>

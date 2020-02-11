@@ -23,6 +23,7 @@ import PeopleIcon from "@material-ui/icons/People";
 import HomeIcon from "@material-ui/icons/Home";
 import WarningIcon from '@material-ui/icons/Warning';
 import SettingsIcon from '@material-ui/icons/Settings';
+import StorageIcon from '@material-ui/icons/Storage';
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import QueryBuilderIcon from "@material-ui/icons/QueryBuilder";
 import HelpIcon from '@material-ui/icons/Help';
@@ -35,8 +36,9 @@ import IconButton from '@material-ui/core/IconButton';
 import Home from "../home/Home";
 import Login from "../login/Login";
 import Registrer from "../register/Registrer";
-import Profile from "../profile/Profile";
+import Profile from "../profile/myprofile";
 import ProfileCard from "../profile/profileCard";
+import EditProfileSettings from '../profile/editProfile';
 
 const drawerWidth = 240;
 
@@ -275,9 +277,9 @@ export default function NavBar(props) {
                 <p>Profile</p>
             </MenuItem>
         </Menu>
-    );
+  );
 
-
+    {/* Sidepanel - Menu bar */ }
     const sideList = side => (
       <div
         className={classes.list}
@@ -293,45 +295,65 @@ export default function NavBar(props) {
             </ListItemIcon>
             <ListItemText primary="Venner" />
           </ListItem>
+
           <ListItem button>
             <ListItemIcon>
               <EmailIcon />
             </ListItemIcon>
             <ListItemText primary="Meldinger" />
           </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText primary="Mine Eiendeler" />
-          </ListItem>
+
+          <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
+            <ListItem button>
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary="Hjem" />
+            </ListItem>
+
+          </Link>
+          <Link to="/prof" style={{ textDecoration: 'none', color: 'black' }}>
+            <ListItem button>
+              <ListItemIcon>
+                <StorageIcon />
+              </ListItemIcon>
+              <ListItemText primary="Mine Eiendeler" />
+            </ListItem>
+
+          </Link>
           <ListItem button>
             <ListItemIcon>
               <QueryBuilderIcon />
             </ListItemIcon>
             <ListItemText primary="Utlånt Eiendeler" />
           </ListItem>
+
           <ListItem button>
             <ListItemIcon>
               <ShoppingBasketIcon />
             </ListItemIcon>
             <ListItemText primary="Lånt Eiendeler" />
           </ListItem>
+
         </List>
         <Divider />
         <List>
+          <Link to="/editprof" style={{ textDecoration: 'none', color: 'black' }}>
           <ListItem button>
             <ListItemIcon>
               <SettingsIcon />
             </ListItemIcon>
             <ListItemText primary="Innstillinger" />
-          </ListItem>
+            </ListItem>
+          </Link>
+
           <ListItem button>
             <ListItemIcon>
               <WarningIcon />
             </ListItemIcon>
             <ListItemText primary="Rapporter" />
           </ListItem>
+
           <ListItem button>
             <ListItemIcon>
               <HelpIcon />
@@ -379,27 +401,6 @@ export default function NavBar(props) {
                 inputProps={{ "aria-label": "search" }}
               />
             </div>
-
-            {/* Snarvei knapper for testing, endres etter fullført test */}
-
-            <Typography variant="h6" className={classes.root}>
-              <Link
-                to="/prof"
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                Min side
-              </Link>
-
-              <Link
-                to="#"
-                onClick={preventDefault}
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                Hjelp
-              </Link>
-            </Typography>
-
-            {/* --------------------------------------------------------------- */}
 
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
@@ -465,6 +466,7 @@ export default function NavBar(props) {
           <Route path="/log" component={Login} />
           <Route path="/lag" component={Registrer} />
           <Route path="/prof" component={Profile} />
+          <Route path="/editprof" component={EditProfileSettings} />
         </main>
       </div>
     );
