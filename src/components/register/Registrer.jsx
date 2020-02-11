@@ -149,7 +149,7 @@ export default function Registrer() {
                                 variant="outlined"
                                 required
                                 fullWidth
-                                id="firstname"
+                                id="sFirstname"
                                 label="Fornavn"
                                 autoFocus
                                 onChange={setFirstnameReg}
@@ -162,7 +162,7 @@ export default function Registrer() {
                                 variant="outlined"
                                 required
                                 fullWidth
-                                id="middlename"
+                                id="sMiddlename"
                                 label="Mellomnavn"
                                 autoFocus
                                 onChange={setMiddlenameReg}
@@ -174,7 +174,7 @@ export default function Registrer() {
                                 variant="outlined"
                                 required
                                 fullWidth
-                                id="lastname"
+                                id="sLastname"
                                 label="Etternavn"
                                 onChange={setLastnameReg}
                             />
@@ -184,7 +184,7 @@ export default function Registrer() {
                                 name="mobile"
                                 variant="outlined"
                                 fullWidth
-                                id="mobile"
+                                id="iMobile"
                                 label="Telefon (valgfri)"
                                 onChange={setMobileReg}
                             />
@@ -195,7 +195,7 @@ export default function Registrer() {
                                 variant="outlined"
                                 required
                                 fullWidth
-                                id="birthday"
+                                id="dBirthday"
                                 type="date"
                                 onChange={setBirthdayReg}
                             />
@@ -206,7 +206,7 @@ export default function Registrer() {
                                 variant="outlined"
                                 required
                                 fullWidth
-                                id="email"
+                                id="sEmail"
                                 label="Epost"
                                 onChange={setEmailReg}
 
