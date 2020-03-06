@@ -10,6 +10,8 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
 
+{/* Navn, hva som er importert, hva som er selv skrevet */}
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({

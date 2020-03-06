@@ -40,6 +40,8 @@ import Profile from "../profile/myprofile";
 import ProfileCard from "../profile/profileCard";
 import EditProfileSettings from '../profile/editProfile';
 
+{/* Kommentar */}
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
