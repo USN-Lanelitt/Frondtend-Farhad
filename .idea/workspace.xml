@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c433183c-4df8-4699-855d-f5b173234ce0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/nav/Nav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/Nav.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/profile/myprofile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/profile/myprofile.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,6 +114,8 @@
       <workItem from="1581097026479" duration="778000" />
       <workItem from="1581190856351" duration="4543000" />
       <workItem from="1582274807413" duration="1990000" />
+      <workItem from="1583482121802" duration="146000" />
+      <workItem from="1583482472079" duration="822000" />
     </task>
     <task id="LOCAL−00001" summary="Added alert pop-up">
       <created>1579876984003</created>
@@ -147,7 +147,13 @@
       <option name="presentableId" value="LOCAL−00005" />
       <updated>1580808124905</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL−00006" summary="Opprettet Profil side, redigert Register side.">
+      <created>1583482243160</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1583482243160</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,12 +187,12 @@
     </state>
     <state x="530" y="178" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.860/745.-1200.1920.1160@0.0.1600.860" timestamp="1580740950150" />
     <state x="636" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-834.-1080.1920.1040@0.0.1920.1040" timestamp="1580943361605" />
-    <state x="1045" y="39" key="CommitChangelistDialog2" timestamp="1580807970909">
-      <screen x="0" y="0" width="3440" height="1400" />
+    <state x="583" y="29" width="1151" height="982" key="CommitChangelistDialog2" timestamp="1583482241966">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="583" y="29" key="CommitChangelistDialog2/0.0.1920.1040/-660.-1440.3440.1400@0.0.1920.1040" timestamp="1579877047058" />
     <state x="309" y="-1401" key="CommitChangelistDialog2/0.0.1920.1040/-736.-1440.3440.1400@-736.-1440.3440.1400" timestamp="1580467742634" />
-    <state x="583" y="29" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1580494090404" />
+    <state x="583" y="29" width="1151" height="982" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1583482241966" />
     <state x="1045" y="39" key="CommitChangelistDialog2/0.0.3440.1400@0.0.3440.1400" timestamp="1580807970909" />
     <state x="1624" y="-994" key="FileChooserDialogImpl" timestamp="1580351321399">
       <screen x="-736" y="-1440" width="3440" height="1400" />
@@ -196,11 +202,11 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="361" y="347" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1579918786425" />
-    <state x="2336" y="370" width="484" height="407" key="Vcs.Push.Dialog.v2" timestamp="1580905234421">
-      <screen x="0" y="0" width="3440" height="1400" />
+    <state x="382" y="286" width="983" height="407" key="Vcs.Push.Dialog.v2" timestamp="1583482257571">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1601" y="-1070" width="816" height="547" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-736.-1440.3440.1400@-736.-1440.3440.1400" timestamp="1580467753984" />
-    <state x="1304" y="275" width="484" height="407" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1580494104145" />
+    <state x="382" y="286" width="983" height="407" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1583482257571" />
     <state x="2336" y="370" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1580905234421" />
     <state x="2256" y="525" key="com.intellij.ide.util.TipDialog" timestamp="1579734404468">
       <screen x="0" y="0" width="3440" height="1400" />
@@ -210,12 +216,12 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="767" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-660.-1440.3440.1400@0.0.1920.1040" timestamp="1579877029658" />
-    <state x="1355" y="311" width="672" height="504" key="search.everywhere.popup" timestamp="1583482213518">
+    <state x="1355" y="311" width="672" height="504" key="search.everywhere.popup" timestamp="1583482247573">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="814" y="253" width="672" height="417" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1580768444254" />
     <state x="1691" y="-1021" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-736.-1440.3440.1400@-736.-1440.3440.1400" timestamp="1581040831210" />
-    <state x="1355" y="311" width="672" height="504" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583482213518" />
+    <state x="1355" y="311" width="672" height="504" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583482247573" />
     <state x="523" y="320" width="672" height="678" key="search.everywhere.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1580905231531" />
   </component>
 </project>
