@@ -25,9 +25,9 @@ export default function BrukerVilkar() {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Typography variant="outlined" color="primary" onClick={handleClickOpen}>
         Jeg godtar brukervilkårene
-      </Button>
+      </Typography>
       <Dialog
         fullScreen={fullScreen}
         open={open}
@@ -37,14 +37,43 @@ export default function BrukerVilkar() {
         <DialogTitle id="responsive-dialog-title">{"Lånelitt Brukervilkår"}</DialogTitle>
         <DialogContent>
           <DialogContentText>
-          <Typography>
-            <h1>Vilkår</h1>
-          </Typography>
+            <Typography>
+              1."Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea com
+              modo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolor
+              e eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa q
+              ui officia deserunt mollit anim id est laborum."
+            </Typography>
+            <Typography>
+              2. "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo
+              r incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dol
+              or in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Exce
+              pteur sint occaecat cupidatat non proident, sunt in culpa qu
+              i officia deserunt mollit anim id est laborum."
+            </Typography>
+            <Typography>
+              3. "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed d
+              o eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mi
+              nim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo co
+              nsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugi
+              at nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in cul
+              pa qui officia deserunt mollit anim id est laborum."
+            </Typography>
+            <Typography>
+              4."Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
+              ncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercit
+              ation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repre
+              henderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaeca
+              t cupidatat non proident, sunt in culpa qu
+              i officia deserunt mollit anim id est laborum."
+            </Typography>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose} color="primary">
-            Ikke enig
+            Ikke godta
           </Button>
           <Button onClick={handleClose} color="primary" autoFocus>
             Godta

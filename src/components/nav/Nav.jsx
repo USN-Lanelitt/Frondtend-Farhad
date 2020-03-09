@@ -3,6 +3,7 @@ import clsx from "clsx";
 import {Link, Route} from 'react-router-dom';
 import EmailIcon from "@material-ui/icons/Email";
 import List from '@material-ui/core/List';
+import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -17,6 +18,7 @@ import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import PeopleIcon from "@material-ui/icons/People";
@@ -33,14 +35,19 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import IconButton from '@material-ui/core/IconButton';
-import Home from "../home/Home";
-import Login from "../login/Login";
-import Registrer from "../register/Registrer";
-import Profile from "../profile/myprofile";
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
+import Collapse from '@material-ui/core/Collapse';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import EditIcon from '@material-ui/icons/Edit';
+import Home from "../../pages/Home/Home";
+import admin from "../../pages/Admin/adminpage";
+import Loginpage from "../../pages/Login/loginpage";
+import Registerpage from "../../pages/Register/registerpage";
+import Profile from "../../pages/Profile/myprofile";
 import ProfileCard from "../profile/profileCard";
-import EditProfileSettings from '../profile/editProfile';
+import EditProfileSettings from '../../pages/Profile/editProfile';
 
-{/* Kommentar */}
 
 const drawerWidth = 240;
 
@@ -167,8 +174,8 @@ const useStyles = makeStyles(theme => ({
 export default function NavBar(props) {
     const classes = useStyles();
     const theme = useTheme();
-    const preventDefault = event => event.preventDefault();
     const [open, setOpen] = React.useState(false);
+    const [expanded, setExpand] = React.useState(false);
     const [state, setState] = React.useState({
         left: false,
     });
@@ -180,6 +187,11 @@ export default function NavBar(props) {
  const handleDrawerClose = () => {
    setOpen(false);
  };
+
+ const handleClick = () => {
+     setExpand(!expanded);
+ };
+
     
 
     const toggleDrawer = (side, open) => event => {
@@ -281,7 +293,6 @@ export default function NavBar(props) {
         </Menu>
   );
 
-    {/* Sidepanel - Menu bar */ }
     const sideList = side => (
       <div
         className={classes.list}
@@ -290,7 +301,14 @@ export default function NavBar(props) {
         onKeyDown={toggleDrawer(side, false)}
       >
         <ProfileCard />
-        <List>
+        <List
+            component="nav"
+              aria-labelledby="nested-list-subheader"
+              subheader={
+                  <ListSubheader component="div" id="nested-list-subheader">
+                      Snarveier
+                  </ListSubheader>
+              }>
           <ListItem button>
             <ListItemIcon>
               <PeopleIcon />
@@ -340,14 +358,26 @@ export default function NavBar(props) {
         </List>
         <Divider />
         <List>
-          <Link to="/editprof" style={{ textDecoration: 'none', color: 'black' }}>
-          <ListItem button>
+
+          <ListItem button onClick={handleClick}>
             <ListItemIcon>
               <SettingsIcon />
             </ListItemIcon>
             <ListItemText primary="Innstillinger" />
+              {expanded ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
-          </Link>
+              <Collapse in={expanded} timeout="auto" unmountOnExit>
+                  <List component="div" disablePadding>
+                      <Link to="/editprof" style={{ textDecoration: 'none', color: 'black' }}>
+                      <ListItem button className={classes.nested}>
+                          <ListItemIcon>
+                              <EditIcon />
+                          </ListItemIcon>
+                          <ListItemText primary="Rediger profil" />
+                      </ListItem>
+                      </Link>
+                  </List>
+              </Collapse>
 
           <ListItem button>
             <ListItemIcon>
@@ -362,10 +392,16 @@ export default function NavBar(props) {
             </ListItemIcon>
             <ListItemText primary="Hjelp" />
           </ListItem>
+
+            <ListItem button>
+                <ListItemIcon>
+                    <ExitToAppIcon />
+                </ListItemIcon>
+                <ListItemText primary="Logg ut"/>
+            </ListItem>
         </List>
       </div>
     );
-
 
     return (
       <div className={classes.grow}>
@@ -406,6 +442,13 @@ export default function NavBar(props) {
 
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
+                <Link to="/admin" style={{ color: "white" }}>
+                <IconButton  color="inherit">
+                    <Badge color="secondary">
+                        <SupervisorAccountIcon />
+                    </Badge>
+                </IconButton>
+                </Link>
               <IconButton aria-label="show 1 new mails" color="inherit">
                 <Badge badgeContent={1} color="secondary">
                   <MailIcon />
@@ -465,8 +508,9 @@ export default function NavBar(props) {
 
         <main>
           <Route path="/" exact component={Home} />
-          <Route path="/log" component={Login} />
-          <Route path="/lag" component={Registrer} />
+          <Route path="/admin" exact component={admin} />
+          <Route path="/log" component={Loginpage} />
+          <Route path="/lag" component={Registerpage} />
           <Route path="/prof" component={Profile} />
           <Route path="/editprof" component={EditProfileSettings} />
         </main>
