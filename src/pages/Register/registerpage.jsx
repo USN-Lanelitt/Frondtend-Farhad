@@ -62,7 +62,7 @@ export default function Registerpage() {
                 //'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                firstname: values.firsname,
+                firstname: values.firstname,
                 middlename: values.middlename,
                 lastname: values.lastname,
                 birthday: selectedDate,
@@ -81,7 +81,7 @@ export default function Registerpage() {
     const classes = useStyles();
 
     const [values, setValues] = useState({
-        firsname: '',
+        firstname: '',
         middlename: '',
         lastname: '',
         phone: '',
